@@ -14,4 +14,4 @@ class TestSomethingWorks(object):
     def test_two(self):
         logger.info('Second test started')
         x = "hello"
-        assert hasattr(x, 'check')
+        assert hasattr(x, 'join')
