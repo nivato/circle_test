@@ -1,0 +1,10 @@
+# Log files
+/log/*
+!/log/.gitkeep
+
+# Virtual env
+/venv/*
+
+# Pytest
+.pytest_cache/*
+/report/*
