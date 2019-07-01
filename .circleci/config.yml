@@ -52,3 +52,7 @@ jobs:
       - store_artifacts:
           path: report
           destination: report
+
+      - store_artifacts:
+          path: log
+          destination: log
