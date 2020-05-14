@@ -1,10 +1,11 @@
 # Log files
-/log/*
-!/log/.gitkeep
+/tests/log/*
+!/tests/log/.gitkeep
 
 # Virtual env
 /venv/*
 
 # Pytest
 .pytest_cache/*
-/report/*
+/tests/report/*
+!/tests/report/.gitkeep
