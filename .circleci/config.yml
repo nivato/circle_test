@@ -39,7 +39,7 @@ jobs:
       - run:
           name: run tests
           command: |
-            pytest
+            pipenv run pytest
 
       - store_test_results:
           path: tests/report
