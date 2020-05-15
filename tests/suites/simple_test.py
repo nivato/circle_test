@@ -1,5 +1,7 @@
 import logging
 
+from hamcrest import assert_that, is_in, has_property
+
 
 logger = logging.getLogger(__name__)
 faker = None
@@ -46,10 +48,12 @@ class TestSomethingDoesntWork(object):
         logger.info('First test started')
         context.during_test = 'yey 1'
         x = "this"
-        assert 't' in x
+        c = 't'
+        assert_that(c, is_in(x), f'{c} is not in {x}')
 
     def test_four(self, context):
         logger.info('Second test started')
         context.during_test2 = 'yey 2'
-        x = "hello"
-        assert hasattr(x, 'join')
+        x = 'hello'
+        attr = 'join'
+        assert_that(x, has_property(attr), f'{x} has no {attr} attribute')

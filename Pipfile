@@ -6,6 +6,7 @@ verify_ssl = true
 [packages]
 pytest = "*"
 pytest-html = "*"
+PyHamcrest = "*"
 requests = "*"
 pymysql = "*"
 SQLAlchemy = "*"

@@ -27,8 +27,15 @@ def pytest_runtest_setup(item):
     logger.info(f'TEST START: {item.nodeid}')
 
 
-def pytest_runtest_call(item):
-    logger.info(f'Running {item.name} ...')
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    """ a hook to get test report and log errors to the log file in case of test failures """
+    outcome = yield
+    report = outcome.get_result()
+
+    # we only look at actual failing test calls, not setup/teardown
+    if report.when == 'call' and report.failed:
+        logger.error(report.longreprtext)
 
 
 def pytest_runtest_teardown(item, nextitem):
