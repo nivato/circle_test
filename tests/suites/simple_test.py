@@ -2,6 +2,7 @@ import logging
 
 
 logger = logging.getLogger(__name__)
+faker = None
 
 
 def setup_module(module):
@@ -41,12 +42,14 @@ class TestSomethingDoesntWork(object):
         """
         logger.info('TEARDOWN METHOD')
 
-    def test_three(self):
+    def test_three(self, context):
         logger.info('First test started')
+        context.during_test = 'yey 1'
         x = "this"
         assert 't' in x
 
-    def test_four(self):
+    def test_four(self, context):
         logger.info('Second test started')
+        context.during_test2 = 'yey 2'
         x = "hello"
         assert hasattr(x, 'join')
