@@ -63,4 +63,5 @@ class TestSomethingDoesntWork(object):
     @patch.object(SomeClient, 'my_method', return_value=[4, 5])
     def test_mock(self, my_method, context):
         context.during_test3 = 'yey 3'
-        assert_that(SomeClient().my_method(), equal_to([1, 2]))
+        # verify patched return
+        assert_that(SomeClient().my_method(), equal_to([4, 5]))
