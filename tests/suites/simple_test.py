@@ -1,7 +1,9 @@
 import logging
+from unittest.mock import patch
 
-from hamcrest import assert_that, is_in, has_property
+from hamcrest import assert_that, is_in, has_property, equal_to
 
+from app.mocked_app import SomeClient
 
 logger = logging.getLogger(__name__)
 faker = None
@@ -57,3 +59,8 @@ class TestSomethingDoesntWork(object):
         x = 'hello'
         attr = 'join'
         assert_that(x, has_property(attr), f'{x} has no {attr} attribute')
+
+    @patch.object(SomeClient, 'my_method', return_value=[4, 5])
+    def test_mock(self, my_method, context):
+        context.during_test3 = 'yey 3'
+        assert_that(SomeClient().my_method(), equal_to([1, 2]))
